@@ -1,0 +1,935 @@
+/* متغيرات CSS مخصصة للدعم فقط */
+.support-page {
+  --support-primary: #2563eb;
+  --support-success: #10b981;
+  --support-warning: #f59e0b;
+  --support-danger: #ef4444;
+  --support-gray: #6b7280;
+  --support-light: #f9fafb;
+  --support-border: #e5e7eb;
+  --support-text: #1f2937;
+  --support-text-light: #6b7280;
+  
+  --support-sidebar-width: 380px;
+  --support-header-height: 70px;
+  --support-stats-height: 60px;
+  
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--support-light);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  direction: rtl;
+}
+
+/* الشريط العلوي */
+.support-header {
+  height: var(--support-header-height);
+  background: white;
+  border-bottom: 1px solid var(--support-border);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.support-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.support-toggle-btn {
+  background: none;
+  border: 1px solid var(--support-border);
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--support-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.support-toggle-btn:hover {
+  background: var(--support-light);
+  border-color: var(--support-primary);
+}
+
+.support-header-icon {
+  color: var(--support-primary);
+}
+
+.support-header-title h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--support-text);
+  margin: 0;
+}
+
+.support-header-subtitle {
+  font-size: 0.875rem;
+  color: var(--support-text-light);
+  margin-top: 0.25rem;
+}
+
+.support-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.support-refresh-btn {
+  padding: 0.5rem 1rem;
+  background: var(--support-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s;
+}
+
+.support-refresh-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.support-refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.support-spinning {
+  animation: support-spin 1s linear infinite;
+}
+
+@keyframes support-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* المحتوى الرئيسي */
+.support-main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* الشريط الجانبي */
+.support-sidebar {
+  width: var(--support-sidebar-width);
+  background: white;
+  border-left: 1px solid var(--support-border);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.support-sidebar-collapsed {
+  transform: translateX(100%);
+  position: absolute;
+  right: 0;
+  height: calc(100vh - var(--support-header-height) - var(--support-stats-height));
+  z-index: 100;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.support-search-container {
+  padding: 1rem;
+  border-bottom: 1px solid var(--support-border);
+  background: white;
+}
+
+.support-search-box {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.support-search-input {
+  width: 100%;
+  padding: 0.75rem 2.5rem;
+  border: 1px solid var(--support-border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: var(--support-light);
+  transition: border-color 0.2s;
+}
+
+.support-search-input:focus {
+  outline: none;
+  border-color: var(--support-primary);
+}
+
+.support-search-icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--support-gray);
+}
+
+.support-clear-btn {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--support-gray);
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.support-filter-tabs {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.support-filter-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.support-filter-tab {
+  flex-shrink: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--support-border);
+  border-radius: 6px;
+  background: white;
+  font-size: 0.75rem;
+  color: var(--support-text-light);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.support-filter-tab:hover {
+  border-color: var(--support-primary);
+}
+
+.support-filter-active {
+  background: var(--support-primary);
+  color: white;
+  border-color: var(--support-primary);
+}
+
+/* قائمة المحادثات */
+.support-conversations-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.support-conversation-item {
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--support-border);
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  background: white;
+  transition: all 0.2s;
+}
+
+.support-conversation-item:hover {
+  border-color: var(--support-primary);
+  background: #f0f9ff;
+}
+
+.support-conversation-active {
+  border-color: var(--support-primary);
+  background: #e0f2fe;
+}
+
+.support-conversation-unread {
+  border-right: 3px solid var(--support-danger);
+}
+
+.support-conversation-avatar {
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+
+.support-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--support-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.support-unread-badge {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  background: var(--support-danger);
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.125rem 0.375rem;
+  border-radius: 9999px;
+  min-width: 1.25rem;
+  text-align: center;
+}
+
+.support-conversation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.support-user-name {
+  display: block;
+  font-weight: 600;
+  color: var(--support-text);
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.support-conversation-time {
+  font-size: 0.75rem;
+  color: var(--support-text-light);
+}
+
+.support-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.support-status-icon {
+  margin-left: 0.125rem;
+}
+
+.support-conversation-subject {
+  font-weight: 500;
+  color: var(--support-text);
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.support-last-message {
+  font-size: 0.875rem;
+  color: var(--support-text-light);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.support-conversation-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.support-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--support-text-light);
+}
+
+.support-meta-icon {
+  color: var(--support-gray);
+}
+
+/* حالات التحميل والفراغ */
+.support-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--support-text-light);
+}
+
+.support-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--support-border);
+  border-top-color: var(--support-primary);
+  border-radius: 50%;
+  animation: support-spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.support-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--support-text-light);
+  text-align: center;
+}
+
+.support-empty-icon {
+  color: var(--support-border);
+  margin-bottom: 1rem;
+}
+
+.support-empty-text {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.support-empty-subtext {
+  font-size: 0.875rem;
+}
+
+/* منطقة المحادثة */
+.support-chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.support-chat-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--support-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+}
+
+.support-chat-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.support-chat-avatar-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--support-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.support-chat-user-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--support-text);
+  margin-bottom: 0.25rem;
+}
+
+.support-chat-user-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.support-chat-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--support-text-light);
+}
+
+.support-chat-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.support-status-select-input {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--support-border);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  background: white;
+  color: var(--support-text);
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.support-more-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid var(--support-border);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--support-text-light);
+  transition: all 0.2s;
+}
+
+.support-more-btn:hover {
+  background: var(--support-light);
+  border-color: var(--support-primary);
+}
+
+/* منطقة الرسائل */
+.support-messages-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  background: #f8fafc;
+}
+
+.support-no-messages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--support-text-light);
+  text-align: center;
+}
+
+.support-no-messages-icon {
+  color: var(--support-border);
+  margin-bottom: 1rem;
+}
+
+.support-no-messages-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--support-text);
+  margin-bottom: 0.5rem;
+}
+
+.support-no-messages-text {
+  font-size: 0.875rem;
+}
+
+.support-messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.support-message {
+  max-width: 70%;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+}
+
+.support-message-incoming {
+  align-self: flex-start;
+  background: white;
+  border: 1px solid var(--support-border);
+  border-top-right-radius: 4px;
+}
+
+.support-message-outgoing {
+  align-self: flex-end;
+  background: var(--support-primary);
+  color: white;
+  border-bottom-left-radius: 4px;
+}
+
+.support-message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.support-message-sender {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.support-message-time {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.support-message-content {
+  line-height: 1.5;
+  font-size: 0.9375rem;
+  word-break: break-word;
+}
+
+.support-message-status {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+.support-read-icon {
+  color: #93c5fd;
+}
+
+.support-read-text {
+  font-size: 0.75rem;
+}
+
+.support-no-conversation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--support-text-light);
+  text-align: center;
+  padding: 2rem;
+}
+
+.support-no-conversation-icon {
+  color: var(--support-border);
+  margin-bottom: 1.5rem;
+}
+
+.support-no-conversation-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--support-text);
+  margin-bottom: 0.5rem;
+}
+
+.support-no-conversation-text {
+  font-size: 0.875rem;
+  max-width: 300px;
+  line-height: 1.5;
+}
+
+/* حقل الإرسال */
+.support-input-area {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--support-border);
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+  background: white;
+}
+
+.support-attach-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--support-border);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--support-text-light);
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.support-attach-btn:hover {
+  background: var(--support-light);
+  border-color: var(--support-primary);
+}
+
+.support-textarea-wrapper {
+  flex: 1;
+}
+
+.support-message-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--support-border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-family: inherit;
+  resize: none;
+  min-height: 44px;
+  max-height: 120px;
+  background: var(--support-light);
+  transition: border-color 0.2s;
+}
+
+.support-message-input:focus {
+  outline: none;
+  border-color: var(--support-primary);
+}
+
+.support-send-btn {
+  height: 44px;
+  padding: 0 1.25rem;
+  background: var(--support-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.support-send-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.support-send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.support-send-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: support-spin 1s linear infinite;
+}
+
+.support-send-icon {
+  margin-left: 0.125rem;
+}
+
+.support-send-text {
+  font-weight: 500;
+}
+
+/* الإحصائيات */
+.support-stats-bar {
+  height: var(--support-stats-height);
+  background: white;
+  border-top: 1px solid var(--support-border);
+  display: flex;
+  padding: 0 1.5rem;
+  gap: 1rem;
+}
+
+.support-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.support-stat-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--support-text);
+  margin-bottom: 0.25rem;
+}
+
+.support-stat-label {
+  font-size: 0.75rem;
+  color: var(--support-text-light);
+  text-align: center;
+}
+
+.support-stat-open-value { color: var(--support-success); }
+.support-stat-pending-value { color: var(--support-warning); }
+.support-stat-closed-value { color: var(--support-gray); }
+.support-stat-unread-value { color: var(--support-danger); }
+
+.support-stat-open-label { color: var(--support-success); }
+.support-stat-pending-label { color: var(--support-warning); }
+.support-stat-closed-label { color: var(--support-gray); }
+.support-stat-unread-label { color: var(--support-danger); }
+
+/* تحسين شريط التمرير */
+.support-conversations-container::-webkit-scrollbar,
+.support-messages-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.support-conversations-container::-webkit-scrollbar-track,
+.support-messages-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.support-conversations-container::-webkit-scrollbar-thumb,
+.support-messages-area::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.support-conversations-container::-webkit-scrollbar-thumb:hover,
+.support-messages-area::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* التجاوب */
+@media (max-width: 1024px) {
+  .support-sidebar {
+    position: fixed;
+    right: 0;
+    top: var(--support-header-height);
+    bottom: var(--support-stats-height);
+    z-index: 1000;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .support-sidebar-collapsed {
+    transform: translateX(100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .support-sidebar {
+    width: 100%;
+  }
+  
+  .support-chat-user-details {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .support-stats-bar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0.5rem;
+  }
+  
+  .support-stat {
+    flex: 1 0 calc(50% - 0.5rem);
+  }
+  
+  .support-message {
+    max-width: 85%;
+  }
+}
+
+@media (max-width: 480px) {
+  .support-header {
+    padding: 0 1rem;
+  }
+  
+  .support-header-title h1 {
+    font-size: 1rem;
+  }
+  
+  .support-header-subtitle {
+    font-size: 0.75rem;
+  }
+  
+  .support-chat-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .support-messages-area {
+    padding: 1rem;
+  }
+  
+  .support-input-area {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* تحسينات لعرض أسماء المستخدمين */
+.support-user-name,
+.support-chat-user-name,
+.support-message-sender {
+  font-weight: 600;
+  color: var(--support-text);
+  word-break: break-word;
+}
+
+.support-user-name {
+  font-size: 0.875rem;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.support-chat-user-name {
+  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+}
+
+.support-message-sender {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* تحسين عرض الرسائل */
+.support-message-content {
+  line-height: 1.5;
+  font-size: 0.9375rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* رسائل الوقت الحقيقي */
+.support-message-incoming {
+  animation: support-message-in 0.3s ease-out;
+}
+
+.support-message-outgoing {
+  animation: support-message-out 0.3s ease-out;
+}
+
+@keyframes support-message-in {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes support-message-out {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* رسائل إعلامية للوقت الحقيقي */
+.support-realtime-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--support-primary);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  z-index: 1000;
+  animation: support-notification-in 0.3s ease-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes support-notification-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

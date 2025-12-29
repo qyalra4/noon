@@ -1,0 +1,824 @@
+:root {
+  --driver-primary-color: #4f46e5;
+  --driver-secondary-color: #7c3aed;
+  --driver-success-color: #10b981;
+  --driver-warning-color: #f59e0b;
+  --driver-danger-color: #ef4444;
+  --driver-info-color: #3b82f6;
+  --driver-gray-50: #f9fafb;
+  --driver-gray-100: #f3f4f6;
+  --driver-gray-200: #e5e7eb;
+  --driver-gray-300: #d1d5db;
+  --driver-gray-400: #9ca3af;
+  --driver-gray-500: #6b7280;
+  --driver-gray-600: #4b5563;
+  --driver-gray-700: #374151;
+  --driver-gray-800: #1f2937;
+  --driver-gray-900: #111827;
+  --driver-sidebar-width: 380px;
+  --driver-header-height: 70px;
+  --driver-stats-height: 70px;
+}
+
+.driver-support-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--driver-gray-50);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* الشريط العلوي */
+.driver-support-header {
+  height: var(--driver-header-height);
+  background: white;
+  border-bottom: 1px solid var(--driver-gray-200);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.driver-header-left-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.driver-sidebar-toggle {
+  background: none;
+  border: 1px solid var(--driver-gray-200);
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--driver-gray-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.driver-sidebar-toggle:hover {
+  background: var(--driver-gray-100);
+  border-color: var(--driver-gray-300);
+}
+
+.driver-header-icon {
+  color: var(--driver-primary-color);
+}
+
+.driver-page-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--driver-gray-800);
+  margin: 0;
+}
+
+.driver-page-subtitle {
+  font-size: 0.875rem;
+  color: var(--driver-gray-500);
+  margin-top: 0.25rem;
+}
+
+.driver-header-right-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.driver-refresh-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--driver-gray-200);
+  background: white;
+  color: var(--driver-gray-700);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.driver-refresh-btn:hover:not(:disabled) {
+  background: var(--driver-gray-50);
+  border-color: var(--driver-gray-300);
+}
+
+.driver-refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.driver-spinning {
+  animation: driver-spin 1s linear infinite;
+}
+
+@keyframes driver-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* المحتوى الرئيسي */
+.driver-support-main-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* العمود الأول: قائمة المحادثات */
+.driver-conversations-sidebar {
+  width: var(--driver-sidebar-width);
+  background: white;
+  border-right: 1px solid var(--driver-gray-200);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+}
+
+.driver-conversations-sidebar.collapsed {
+  width: 60px;
+}
+
+.driver-sidebar-top {
+  padding: 1rem;
+  border-bottom: 1px solid var(--driver-gray-200);
+  background: white;
+}
+
+.driver-search-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.driver-search-input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  border: 1px solid var(--driver-gray-200);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: var(--driver-gray-50);
+  transition: all 0.2s;
+}
+
+.driver-search-input:focus {
+  outline: none;
+  border-color: var(--driver-primary-color);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.driver-search-container svg {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--driver-gray-400);
+}
+
+.driver-clear-search-btn {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--driver-gray-400);
+  cursor: pointer;
+  padding: 0;
+}
+
+.driver-filter-tabs {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.driver-filter-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.driver-filter-btn {
+  flex-shrink: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--driver-gray-200);
+  border-radius: 6px;
+  background: white;
+  font-size: 0.75rem;
+  color: var(--driver-gray-600);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.driver-filter-btn:hover {
+  background: var(--driver-gray-50);
+}
+
+.driver-filter-btn.active {
+  background: var(--driver-primary-color);
+  color: white;
+  border-color: var(--driver-primary-color);
+}
+
+/* قائمة المحادثات */
+.driver-conversations-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.driver-conversation-item {
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--driver-gray-200);
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: white;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.driver-conversation-item:hover {
+  border-color: var(--driver-primary-color);
+  background: var(--driver-gray-50);
+}
+
+.driver-conversation-item.active {
+  border-color: var(--driver-primary-color);
+  background: #f5f3ff;
+  box-shadow: 0 1px 3px rgba(79, 70, 229, 0.1);
+}
+
+.driver-conversation-item.has-unread {
+  border-left: 3px solid var(--driver-info-color);
+}
+
+.driver-avatar-container {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.driver-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--driver-primary-color), var(--driver-secondary-color));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.driver-unread-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--driver-danger-color);
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.125rem 0.375rem;
+  border-radius: 9999px;
+  min-width: 1.25rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.driver-conversation-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.driver-conversation-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.driver-driver-info {
+  flex: 1;
+}
+
+.driver-name {
+  display: block;
+  font-weight: 600;
+  color: var(--driver-gray-800);
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.driver-conversation-time {
+  font-size: 0.75rem;
+  color: var(--driver-gray-500);
+}
+
+.driver-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+
+.driver-status-icon {
+  margin-left: 0.125rem;
+}
+
+.driver-conversation-subject {
+  font-weight: 500;
+  color: var(--driver-gray-700);
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.driver-last-message-preview {
+  font-size: 0.875rem;
+  color: var(--driver-gray-600);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.driver-conversation-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.driver-footer-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--driver-gray-500);
+}
+
+/* حالات التحميل والفراغ */
+.driver-loading-state,
+.driver-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--driver-gray-500);
+  text-align: center;
+}
+
+.driver-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--driver-gray-200);
+  border-top-color: var(--driver-primary-color);
+  border-radius: 50%;
+  animation: driver-spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.driver-empty-message {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  color: var(--driver-gray-500);
+}
+
+/* العمود الثاني: واجهة المحادثة */
+.driver-chat-interface {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.driver-chat-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--driver-gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+}
+
+.driver-chat-avatar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.driver-large-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--driver-primary-color), var(--driver-secondary-color));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.driver-chat-details h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--driver-gray-800);
+  margin-bottom: 0.25rem;
+}
+
+.driver-contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.driver-contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--driver-gray-600);
+}
+
+.driver-chat-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.driver-status-selector {
+  position: relative;
+}
+
+.driver-status-dropdown {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--driver-gray-200);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  background: white;
+  color: var(--driver-gray-700);
+  cursor: pointer;
+  min-width: 120px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 12px;
+}
+
+.driver-status-dropdown:focus {
+  outline: none;
+  border-color: var(--driver-primary-color);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.driver-more-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid var(--driver-gray-200);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--driver-gray-600);
+  transition: all 0.2s;
+}
+
+.driver-more-btn:hover {
+  background: var(--driver-gray-50);
+  border-color: var(--driver-gray-300);
+}
+
+/* منطقة الرسائل */
+.driver-messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  background: var(--driver-gray-50);
+}
+
+.driver-no-messages,
+.driver-no-conversation-selected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--driver-gray-500);
+  text-align: center;
+}
+
+.driver-no-messages h3,
+.driver-no-conversation-selected h2 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--driver-gray-700);
+}
+
+.driver-no-messages p,
+.driver-no-conversation-selected p {
+  font-size: 0.875rem;
+}
+
+.driver-messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.driver-message-bubble {
+  max-width: 70%;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  position: relative;
+  animation: driver-fadeIn 0.3s ease;
+}
+
+@keyframes driver-fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.driver-message-bubble.incoming {
+  align-self: flex-start;
+  background: white;
+  border: 1px solid var(--driver-gray-200);
+  border-top-right-radius: 4px;
+}
+
+.driver-message-bubble.outgoing {
+  align-self: flex-end;
+  background: var(--driver-primary-color);
+  color: white;
+  border-bottom-left-radius: 4px;
+}
+
+.driver-message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.driver-sender-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.driver-message-time {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.driver-message-content {
+  line-height: 1.5;
+  font-size: 0.9375rem;
+  word-break: break-word;
+}
+
+.driver-message-status {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+/* حقل الإرسال */
+.driver-message-input-container {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--driver-gray-200);
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+  background: white;
+}
+
+.driver-attach-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid var(--driver-gray-200);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--driver-gray-600);
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.driver-attach-btn:hover {
+  background: var(--driver-gray-50);
+  border-color: var(--driver-gray-300);
+}
+
+.driver-input-wrapper {
+  flex: 1;
+}
+
+.driver-message-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--driver-gray-200);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-family: inherit;
+  resize: none;
+  min-height: 44px;
+  max-height: 120px;
+  background: var(--driver-gray-50);
+  transition: all 0.2s;
+}
+
+.driver-message-input:focus {
+  outline: none;
+  border-color: var(--driver-primary-color);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.driver-send-button {
+  height: 44px;
+  padding: 0 1.25rem;
+  background: var(--driver-primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.driver-send-button:hover:not(:disabled) {
+  background: var(--driver-secondary-color);
+}
+
+.driver-send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.driver-sending-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: driver-spin 1s linear infinite;
+}
+
+/* الإحصائيات */
+.driver-support-stats {
+  height: var(--driver-stats-height);
+  background: white;
+  border-top: 1px solid var(--driver-gray-200);
+  display: flex;
+  padding: 0 1.5rem;
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.driver-stat-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-right: 1px solid var(--driver-gray-200);
+}
+
+.driver-stat-card:last-child {
+  border-right: none;
+}
+
+.driver-stat-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--driver-gray-800);
+}
+
+.driver-stat-label {
+  font-size: 0.75rem;
+  color: var(--driver-gray-500);
+  margin-top: 0.25rem;
+}
+
+.stat-open { color: var(--driver-success-color); }
+.stat-pending { color: var(--driver-warning-color); }
+.stat-closed { color: var(--driver-gray-500); }
+.stat-unread { color: var(--driver-info-color); }
+
+/* تحسين شريط التمرير */
+.driver-conversations-list::-webkit-scrollbar,
+.driver-messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.driver-conversations-list::-webkit-scrollbar-track,
+.driver-messages-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.driver-conversations-list::-webkit-scrollbar-thumb,
+.driver-messages-container::-webkit-scrollbar-thumb {
+  background: var(--driver-gray-300);
+  border-radius: 3px;
+}
+
+.driver-conversations-list::-webkit-scrollbar-thumb:hover,
+.driver-messages-container::-webkit-scrollbar-thumb:hover {
+  background: var(--driver-gray-400);
+}
+
+/* التجاوب */
+@media (max-width: 1024px) {
+  .driver-conversations-sidebar {
+    position: fixed;
+    left: 0;
+    top: var(--driver-header-height);
+    bottom: var(--driver-stats-height);
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    background: white;
+  }
+  
+  .driver-conversations-sidebar.collapsed {
+    transform: translateX(-100%);
+  }
+  
+  .driver-chat-interface {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .driver-support-stats {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0.5rem;
+  }
+  
+  .driver-stat-card {
+    flex: 1 0 calc(50% - 1rem);
+    border: 1px solid var(--driver-gray-200);
+    margin: 0.25rem;
+    border-radius: 6px;
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .driver-stat-card:nth-child(even) {
+    border-right: none;
+  }
+  
+  .driver-contact-info {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .driver-message-bubble {
+    max-width: 85%;
+  }
+}
+
+@media (max-width: 480px) {
+  .driver-support-header {
+    padding: 0 1rem;
+  }
+  
+  .driver-page-title {
+    font-size: 1rem;
+  }
+  
+  .driver-page-subtitle {
+    font-size: 0.75rem;
+  }
+  
+  .driver-chat-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .driver-messages-container {
+    padding: 1rem;
+  }
+  
+  .driver-message-input-container {
+    padding: 0.75rem 1rem;
+  }
+}

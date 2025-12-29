@@ -1,0 +1,194 @@
+.sidebar {
+  width: 250px;
+  background-color: #ffffff;
+  border-left: 1px solid #e9ecef;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  direction: rtl;
+  overflow-y: auto;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.sidebar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: right;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  background-color: #e9ecef;
+}
+
+.dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.dropdown-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dropdown-items {
+  display: none;
+  padding-right: 32px; /* مسافة من اليمين */
+}
+
+.dropdown-items.open {
+  display: block;
+  
+}
+
+.dropdown-item {
+  display: block;
+  margin-block: 4px;
+  width: 95%;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #6d6c6c;
+  text-align: right;
+  cursor: pointer;
+
+  border-radius: 10px;
+  background-color: #eee;
+}
+
+.dropdown-item:hover {
+  background-color: #e8b7b7;
+}
+
+.sidebar-foot {
+  margin-top: auto;
+  padding: 16px;
+  border-top: 1px solid #e9ecef;
+  text-align: center;
+}
+/* FILE: src/components/styles/sidebar.css */
+.nav-section {
+  margin-bottom: 15px;
+}
+
+.section-label {
+  display: block;
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 15px 15px 8px 15px;
+  padding-top: 10px;
+  border-top: 1px solid #f3f4f6;
+  text-align: right;
+
+}
+
+.nav-section:first-child .section-label {
+  border-top: none;
+  margin-top: 5px;
+}
+
+/* باقي الأنماط الحالية تبقى كما هي مع إضافة التحسينات التالية */
+.nav-btn {
+  width: 100%;
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  background: transparent;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 8px;
+  margin: 2px 0;
+}
+
+.nav-btn:hover {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.nav-logout {
+  color: #ef4444;
+}
+
+.nav-logout:hover {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+/* تحسينات للأيقونات */
+.nav-btn svg {
+  flex-shrink: 0;
+}
+
+/* تحسينات للقوائم المنسدلة */
+.nav-dropdown {
+  margin: 5px 0;
+}
+
+.dropdown-items {
+  padding-right: 40px;
+}
+
+.dropdown-item {
+  width: 100%;
+  padding: 10px 15px;
+  text-align: right;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.dropdown-item:hover {
+  background-color: #f9fafb;
+  color: #374151;
+}
